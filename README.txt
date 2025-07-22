@@ -1,21 +1,27 @@
-/gaurav-bhole-website/
+/gauravbhole.github.io/
 |
-|-- index.html             # The main page of your website
+|-- index.html             # The "Researcher" professional homepage
+|-- life.html              # The "Adventurer" personal page
 |
 |-- /assets/
-|   |-- /images/           # Folder for your photos
-|   |   |-- profile.jpg
-|   |   |-- football_win.jpg
-|   |   |-- trekking.jpg
-|   |   |-- scuba_diving.jpg
+|   |-- /images/
+|   |   |-- profile.png
+|   |   |-- iiit-logo.png
+|   |   |-- epfl-logo.svg
+|   |   |-- gix-logo.png
+|   |   |-- f9-logo.png
+|   |   |-- football.jpg
 |   |   |-- skydiving.jpg
+|   |   |-- trekking.jpg
 |   |   |-- rafting.jpg
+|   |   |-- travel.jpg
+|   |   |-- life-bg.jpg      # Background for personal page
 |   |
-|   |-- /videos/           # Folder for your videos
-|       |-- thrilling_adventures.mp4
+|   |-- /videos/
+|       |-- adventure-video.mp4
 |
 |-- /styles/
-|   |-- main.css           # Your custom CSS for styling
+|   |-- main.css           # Main styling file
 |
 |-- /scripts/
-|   |-- main.js            # Your custom JavaScript for interactivity
+|   |-- main.js 
