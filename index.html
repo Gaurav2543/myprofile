@@ -1,1 +1,204 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Bhole | Research & Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-black/30 backdrop-blur-lg p-4 fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-sky-400 font-serif">Gaurav Bhole</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-slate-300 hover:text-sky-400 active">Home</a>
+                <a href="#research" class="nav-link text-slate-300 hover:text-sky-400">Research</a>
+                <a href="#publications" class="nav-link text-slate-300 hover:text-sky-400">Publications</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-sky-400">Projects</a>
+                <a href="#life" class="nav-link text-slate-300 hover:text-sky-400">Life & Hobbies</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-sky-400">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="#home" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Home</a>
+            <a href="#research" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Research</a>
+            <a href="#publications" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Publications</a>
+            <a href="#projects" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Projects</a>
+            <a href="#life" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Life & Hobbies</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+            <div id="particles-js"></div>
+            <div class="container mx-auto text-center content-z">
+                <img src="https://placehold.co/150x150/1e293b/e2e8f0?text=GB" alt="Gaurav Bhole" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-sky-500/50 shadow-lg">
+                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4">Gaurav Bhole</h1>
+                <p class="text-xl md:text-2xl text-slate-300 mb-2">M.S. in Computational Natural Sciences at IIIT Hyderabad</p>
+                <p class="max-w-3xl mx-auto text-slate-400 mb-8">
+                    A researcher passionate about the intersection of deep learning and life sciences. I build intelligent systems to solve complex problems in medical imaging and genetics, while exploring the world through football, thrilling adventures, and travel.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#research" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Explore My Research</a>
+                    <a href="#life" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Discover My Life</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section (Content remains the same) -->
+        <section id="research" class="py-20 px-4 section-hidden">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-center mb-2 text-sky-400">Research Focus</h2>
+                <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">My work is centered on applying deep learning techniques to pressing challenges in life sciences, with a special focus on medical imaging, genomics, and computational biology.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-6 text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="mx-auto bg-sky-900/50 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-sky-500/50"><i data-lucide="brain-circuit" class="w-8 h-8 text-sky-400"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Deep Learning in Life Sciences</h3>
+                        <p class="text-slate-400">Leveraging architectures like CNNs, Transformers, and GNNs to model complex biological data and uncover novel insights.</p>
+                    </div>
+                    <div class="glass-card p-6 text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="mx-auto bg-sky-900/50 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-sky-500/50"><i data-lucide="scan-eye" class="w-8 h-8 text-sky-400"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Medical Imaging Analysis</h3>
+                        <p class="text-slate-400">Developing robust models for tasks like classification, segmentation, and detection in mammography and other imaging modalities.</p>
+                    </div>
+                    <div class="glass-card p-6 text-center hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="mx-auto bg-sky-900/50 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-sky-500/50"><i data-lucide="helix" class="w-8 h-8 text-sky-400"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Genetics & Structural Variants</h3>
+                        <p class="text-slate-400">Analyzing long-read sequencing data to accurately detect structural variants and understand their role in human genetic diversity and disease.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section (Content remains the same) -->
+        <section id="publications" class="py-20 px-4 bg-slate-900/30 section-hidden">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-center mb-12 text-sky-400">Publications</h2>
+                <div class="space-y-8 max-w-4xl mx-auto">
+                    <div class="glass-card p-6 flex flex-col md:flex-row gap-6 hover:border-sky-400 transition-all duration-300">
+                        <div class="flex-shrink-0"><i data-lucide="file-text" class="w-12 h-12 text-sky-400"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Mammo-Bench: A Large-scale Benchmark Dataset of Mammography Images</h3>
+                            <p class="text-slate-400 text-sm mb-2">Gaurav Bhole, Suba S and Nita Parekh</p>
+                            <p class="text-slate-400 mb-3">Developed a large-scale, standardized mammography dataset from seven public sources to serve as a benchmark for training and evaluating deep learning models in breast cancer detection.</p>
+                            <a href="#" class="text-sky-400 hover:text-sky-300 font-semibold">View Abstract &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 flex flex-col md:flex-row gap-6 hover:border-sky-400 transition-all duration-300">
+                         <div class="flex-shrink-0"><i data-lucide="file-text" class="w-12 h-12 text-sky-400"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">HyperCLSA: A Hypergraph Contrastive Learning Pipeline for Multi-Omics Data Integration</h3>
+                            <p class="text-slate-400 text-sm mb-2">Contribution to project</p>
+                            <p class="text-slate-400 mb-3">Proposed a novel deep learning framework combining hypergraphs, contrastive learning, and self-attention for effective multi-omics data integration in breast cancer subtyping.</p>
+                            <a href="#" class="text-sky-400 hover:text-sky-300 font-semibold">View Abstract &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 flex flex-col md:flex-row gap-6 hover:border-sky-400 transition-all duration-300">
+                         <div class="flex-shrink-0"><i data-lucide="file-text" class="w-12 h-12 text-sky-400"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">DFANet: A Difference Fusion Attention-based method for Semantic Change Detection</h3>
+                            <p class="text-slate-400 text-sm mb-2">Omkar Oak, Rukmini Nazre, Rujuta Budke, Suraj Sawant, Gaurav Bhole</p>
+                            <p class="text-slate-400 mb-3">Introduced DFANet, a multi-task learning framework for semantic change detection in remote sensing imagery, outperforming existing methods on benchmark datasets.</p>
+                            <a href="#" class="text-sky-400 hover:text-sky-300 font-semibold">View Abstract &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Content remains the same) -->
+        <section id="projects" class="py-20 px-4 section-hidden">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-center mb-12 text-sky-400">Key Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">Structural Variant Detection in Long Read DNA</h3><p class="text-slate-400 mb-4 flex-grow">Developed a novel pipeline for precise detection of structural variants by evaluating state-of-the-art callers using statistical, deep learning, and graph-based approaches.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Biopython</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Pysam</span></div></div>
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">Age Prediction from Human Faces</h3><p class="text-slate-400 mb-4 flex-grow">Developed and compared various CNN and ViT based models for age prediction, ranking 7th among 200 students in a Kaggle contest.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">PyTorch</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">CNN</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">ViT</span></div></div>
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">Neural Machine Translation with Transformer</h3><p class="text-slate-400 mb-4 flex-grow">Built a Transformer model from scratch for English-to-French translation, based on the 'Attention is All You Need' paper.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">PyTorch</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">NLP</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Transformer</span></div></div>
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">GPT-2 Fine-Tuning for Text Summarization</h3><p class="text-slate-400 mb-4 flex-grow">Implemented and compared three different fine-tuning approaches for the GPT-2 language model on the text summarization task.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">GPT-2</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Hugging Face</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">LangChain</span></div></div>
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">AI Conversational Agents for Stress Therapy</h3><p class="text-slate-400 mb-4 flex-grow">As a research intern, assisted mental health professionals by creating AI-driven conversational agents to provide preliminary support to patients.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">AI</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">LLM</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Healthcare</span></div></div>
+                    <div class="glass-card p-6 flex flex-col h-full"><h3 class="text-xl font-bold mb-2">Custom Learning Management System</h3><p class="text-slate-400 mb-4 flex-grow">Developed a full-stack LMS from scratch for an NGO, featuring content addition and instructor grading functionalities.</p><div class="flex flex-wrap gap-2"><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">MERN Stack</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span><span class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPDATED Life & Hobbies Section -->
+        <section id="life" class="py-20 px-4 bg-gray-900/50 section-hidden">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-serif font-bold text-center mb-2 text-amber-400">Life Beyond the Code</h2>
+                <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">I thrive on adrenaline and adventure. From leading my university football team to its first victory in 9 years to exploring the depths of the ocean and the heights of the sky, I'm always seeking the next challenge.</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x700/15803d/ffffff?text=Football+Glory" alt="Football Victory"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x800/065f46/ffffff?text=Mountain+Trek" alt="Hiking"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x600/115e59/ffffff?text=Cycling+Trip" alt="Cycling"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x800/0f766e/ffffff?text=Scuba+Diving" alt="Scuba Diving"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x500/0e7490/ffffff?text=Skydiving" alt="Skydiving"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x400/0369a1/ffffff?text=River+Rafting" alt="Rafting"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x450/075985/ffffff?text=Glacial+River+Swim" alt="Glacial River Swimming"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x750/0c4a6e/ffffff?text=Travel+Diaries" alt="Travel"></div>
+                        <div>
+                           <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/watch?v=G1IbR2d-U8s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x600/082f49/ffffff?text=River+Jumping" alt="River Jumping"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x800/1e3a8a/ffffff?text=Team+Captain" alt="Football Captain"></div>
+                        <div><img class="h-auto max-w-full rounded-lg" src="https://placehold.co/500x500/312e81/ffffff?text=Exploring" alt="Exploring"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Content remains the same) -->
+        <section id="contact" class="py-20 px-4 section-hidden">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-sky-400">Let's Connect</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-8">I'm always open to discussing new research ideas, collaboration opportunities, or just chatting about football. Feel free to reach out!</p>
+                <div class="flex justify-center items-center space-x-6">
+                    <a href="mailto:gaurav.bhole@research.iiit.ac.in" class="text-slate-300 hover:text-sky-400 transition duration-300 flex items-center gap-2">
+                        <i data-lucide="mail" class="w-8 h-8"></i>
+                        <span class="text-lg">gaurav.bhole@research.iiit.ac.in</span>
+                    </a>
+                    <a href="https://github.com/Gaurav2543" target="_blank" class="text-slate-300 hover:text-sky-400 transition duration-300">
+                        <i data-lucide="github" class="w-8 h-8"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/gaurav-bhole-b45849233" target="_blank" class="text-slate-300 hover:text-sky-400 transition duration-300">
+                         <i data-lucide="linkedin" class="w-8 h-8"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black/50 py-6 px-4">
+        <div class="container mx-auto text-center text-slate-500">
+            <p>&copy; 2025 Gaurav Bhole. Crafted with code and curiosity.</p>
+        </div>
+    </footer>
+
+    <!-- Particle.js library for background animation -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
