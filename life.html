@@ -10,15 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        body {
+            background-color: #111827;
+        }
+        .life-bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 1)), url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 <body class="bg-slate-900 text-slate-300">
 
-    <div class="video-background-container">
-        <video autoplay muted loop id="video-bg">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-person-paddling-in-a-kayak-in-the-middle-of-the-sea-4931-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+    <div class="life-bg-image"></div>
 
     <header id="header">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -36,7 +47,7 @@
             <p class="text-xl md:text-2xl text-amber-300">Chasing Adrenaline, Goals, and New Horizons.</p>
         </section>
 
-        <section id="story" class="py-24">
+        <section id="story" class="py-24 fade-in-section">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="section-title text-amber-300">A Life in Motion</h2>
                 <p class="mt-6 text-lg text-slate-300">
@@ -46,69 +57,61 @@
         </section>
 
         <!-- AI Adventure Planner Section -->
-        <section id="ai-planner" class="py-24">
-            <div class="max-w-3xl mx-auto text-center glass-card p-8">
+        <section id="ai-planner" class="py-24 fade-in-section">
+            <div class="max-w-3xl mx-auto text-center glass-card p-8 md:p-12">
                 <h2 class="section-title text-amber-300">✨ AI Adventure Planner</h2>
                 <p class="mt-4 mb-6 text-slate-300">Want to plan your next trip? Describe the kind of adventure you're looking for, and let my AI assistant generate some ideas for you.</p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-6">
                     <input type="text" id="adventure-prompt" placeholder="e.g., 'a 3-day relaxing beach trip in Europe'" class="w-full bg-slate-800 border border-slate-600 rounded-md px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400">
                     <button id="generate-adventure-btn" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-6 rounded-md transition duration-300 flex-shrink-0">Generate Ideas</button>
                 </div>
-                <div id="adventure-result" class="text-left">
-                    <!-- AI generated content will appear here -->
+                <div id="loading-indicator" class="hidden justify-center items-center gap-2 text-slate-400 mt-6">
+                    <svg class="animate-spin h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    <span>Generating your next adventure...</span>
                 </div>
-                 <div id="loading-indicator" class="hidden mt-6">
-                    <div class="flex justify-center items-center gap-2 text-slate-400">
-                        <svg class="animate-spin h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                        <span>Generating your next adventure...</span>
-                    </div>
-                </div>
+                <div id="adventure-result"></div>
             </div>
         </section>
 
-        <section id="football" class="py-24">
+        <!-- Football Section -->
+        <section id="football" class="py-24 fade-in-section">
             <div class="grid lg:grid-cols-5 gap-12 items-center">
                 <div class="lg:col-span-2">
-                    <img src="https://placehold.co/800x1000/166534/FFFFFF?text=Victory" alt="Football captain with trophy" class="rounded-lg shadow-2xl w-full object-cover h-full">
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-2xl">
+                        <video autoplay muted loop playsinline poster="media/Me_with_Trophy.jpeg" class="w-full h-full object-cover">
+                            <source src="media/Trophy_Lifting.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
                 <div class="lg:col-span-3">
                     <i data-lucide="award" class="w-16 h-16 text-amber-300 mb-4"></i>
                     <h2 class="text-4xl font-serif font-bold text-white mb-4">A Captain's Journey</h2>
                     <p class="text-xl text-amber-300 font-semibold mb-6">Ending a 9-Year Wait for Glory</p>
                     <p class="text-slate-300 text-lg leading-relaxed">
-                        Leading my university's football team was an honor that taught me more about strategy, resilience, and teamwork than any textbook ever could. For nine years, the championship remained just out of reach. In my final year as captain, we rewrote our story. Every practice, every challenge, and every setback culminated in a single moment of victory. Lifting that trophy wasn't just a personal achievement; it was a shared triumph for a team that refused to give up. That spirit is something I carry with me in every challenge I face, in research and in life.
+                        As one of three co-captains, I had the privilege of leading a team that rewrote our university's football story. After a nine-year drought, our collective dedication and strategy culminated in a championship victory. This experience wasn't about a single leader, but about shared responsibility and a unified goal. It taught me invaluable lessons in collaboration and perseverance that I apply to every aspect of my life.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="adventures" class="py-24">
+        <!-- Adventures Gallery -->
+        <section id="adventures" class="py-24 fade-in-section">
             <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
             <div class="adventure-gallery">
+                <!-- Skydiving Video -->
                 <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/0e7490/FFFFFF?text=Scuba+Diving" alt="Scuba Diving">
-                    <div class="adventure-item-title">Scuba Diving</div>
-                </div>
-                <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/0369a1/FFFFFF?text=Skydiving" alt="Skydiving">
+                    <video autoplay muted loop playsinline>
+                        <!-- REPLACE with your skydiving video URL -->
+                        <source src="media/River_Jumping_Aare.mp4" type="video/mp4">
+                    </video>
                     <div class="adventure-item-title">Skydiving</div>
                 </div>
-                <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/075985/FFFFFF?text=Rafting" alt="Rafting">
-                    <div class="adventure-item-title">Rafting</div>
-                </div>
-                <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/0c4a6e/FFFFFF?text=Glacial+Swim" alt="Glacial Swim">
-                    <div class="adventure-item-title">Glacial Swimming</div>
-                </div>
-                <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/1e3a8a/FFFFFF?text=Trekking" alt="Trekking">
-                    <div class="adventure-item-title">Hiking</div>
-                </div>
-                 <div class="adventure-item">
-                    <img src="https://placehold.co/600x800/312e81/FFFFFF?text=Travel" alt="Travel">
-                    <div class="adventure-item-title">Travel</div>
-                </div>
+                <!-- Other Adventure Images -->
+                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/0e7490/FFFFFF?text=Scuba+Diving" alt="Scuba Diving"><div class="adventure-item-title">Scuba Diving</div></div> -->
+                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/075985/FFFFFF?text=Rafting" alt="Rafting"><div class="adventure-item-title">Rafting</div></div> -->
+                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/0c4a6e/FFFFFF?text=Glacial+Swim" alt="Glacial Swim"><div class="adventure-item-title">Glacial Swimming</div></div> -->
+                <div class="adventure-item"><img src="media/MountainTop.JPG" alt="Trekking"><div class="adventure-item-title">Hiking</div></div>
+                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/312e81/FFFFFF?text=Travel" alt="Travel"><div class="adventure-item-title">Travel</div></div> -->
             </div>
         </section>
     </main>

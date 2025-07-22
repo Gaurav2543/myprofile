@@ -47,9 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1
     });
 
-    const elementsToAnimate = document.querySelectorAll('section, .timeline-item, .project-card, .leadership-card, .adventure-item');
+    const elementsToAnimate = document.querySelectorAll('.fade-in-section');
     elementsToAnimate.forEach(el => {
-        el.classList.add('fade-in-section');
         observer.observe(el);
     });
 
@@ -64,17 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function generateAdventure() {
+        // IMPORTANT: PASTE YOUR GOOGLE AI STUDIO API KEY HERE
+        const apiKey = "AIzaSyDPFUIMuOmSHOthQ6c5Wafel7CLluSLAB4"; 
+
         const userPrompt = promptInput.value.trim();
         if (!userPrompt) {
             resultDiv.innerHTML = `<p class="text-red-400">Please enter a description for your adventure.</p>`;
             return;
         }
+        
+        if (apiKey === "YOUR_API_KEY_HERE") {
+            resultDiv.innerHTML = `<p class="text-red-400">Please add your Google AI Studio API key to the scripts/main.js file to enable this feature.</p>`;
+            return;
+        }
 
-        loadingIndicator.style.display = 'block';
+        loadingIndicator.style.display = 'flex';
         resultDiv.innerHTML = '';
         generateBtn.disabled = true;
+        generateBtn.classList.add('cursor-not-allowed');
 
-        const fullPrompt = `As a creative travel planner, generate a concise and exciting adventure plan based on this user request: "${userPrompt}". Provide a title, a short description, 3-4 suggested locations, and 4-5 exciting activities.`;
+        const fullPrompt = `You are an expert travel planner specializing in adventure. A user wants ideas for a trip. Based on their request, create a plan.
+        User Request: "${userPrompt}"
+        Your response should be a creative and exciting plan.`;
         
         const chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
 
@@ -89,11 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         "description": { "type": "STRING", "description": "A brief, engaging summary of the trip." },
                         "locations": {
                             "type": "ARRAY",
-                            "items": { "type": "STRING", "description": "A suggested location." }
+                            "items": { "type": "STRING" },
+                            "description": "An array of 3-4 suggested countries or specific regions."
                         },
                         "activities": {
                             "type": "ARRAY",
-                            "items": { "type": "STRING", "description": "A suggested activity." }
+                            "items": { "type": "STRING" },
+                            "description": "An array of 4-5 exciting activities related to the theme."
                         }
                     },
                     required: ["title", "description", "locations", "activities"]
@@ -101,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const apiKey = ""; // API key is handled by the environment
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         try {
@@ -126,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayAdventure(adventureData);
 
             } else {
+                console.error("Invalid response from API:", result);
                 throw new Error("Invalid response structure from API.");
             }
 
@@ -135,43 +147,30 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
             loadingIndicator.style.display = 'none';
             generateBtn.disabled = false;
+            generateBtn.classList.remove('cursor-not-allowed');
         }
     }
 
     function displayAdventure(data) {
-        const locationsHTML = data.locations.map(loc => `<li>${loc}</li>`).join('');
-        const activitiesHTML = data.activities.map(act => `<li>${act}</li>`).join('');
+        const locationsHTML = data.locations.map(loc => `<li><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2 text-amber-400"></i>${loc}</li>`).join('');
+        const activitiesHTML = data.activities.map(act => `<li><i data-lucide="check" class="inline-block w-4 h-4 mr-2 text-amber-400"></i>${act}</li>`).join('');
 
         resultDiv.innerHTML = `
-            <div class="border border-slate-600 rounded-md p-6 mt-6">
-                <h3 class="text-2xl font-bold text-amber-400 mb-2">${data.title}</h3>
+            <div class="border border-slate-600 rounded-lg p-6 mt-6 text-left animate-fade-in">
+                <h3 class="text-2xl font-bold text-amber-300 mb-2">${data.title}</h3>
                 <p class="text-slate-300 mb-6">${data.description}</p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <h4 class="text-lg font-semibold text-white mb-2">Suggested Locations:</h4>
-                        <ul class="list-disc list-inside text-slate-400 space-y-1">${locationsHTML}</ul>
+                        <h4 class="text-lg font-semibold text-white mb-2">Suggested Destinations:</h4>
+                        <ul class="space-y-2">${locationsHTML}</ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-semibold text-white mb-2">Possible Activities:</h4>
-                        <ul class="list-disc list-inside text-slate-400 space-y-1">${activitiesHTML}</ul>
+                        <h4 class="text-lg font-semibold text-white mb-2">Adventure Checklist:</h4>
+                        <ul class="space-y-2">${activitiesHTML}</ul>
                     </div>
                 </div>
             </div>
         `;
+        lucide.createIcons(); // Re-initialize icons for the newly added HTML
     }
 });
-
-// Add this CSS to your main.css for the fade-in effect
-const style = document.createElement('style');
-style.innerHTML = `
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-in-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
-document.head.appendChild(style);
