@@ -10,6 +10,1049 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Google Analytics - Replace YOUR_GA_ID with your actual Google Analytics ID -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GA_ID');
+    </script> -->
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        #header {
+            position: fixed; top: 0; width: 100%; z-index: 50;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative; padding: 8px 0; color: #cbd5e1; transition: all 0.3s;
+        }
+        .nav-link:hover { color: white; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9); transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        .nav-link-special {
+            display: inline-flex; align-items: center; padding: 10px 20px;
+            border: 2px solid transparent; background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            border-radius: 50px; transition: all 0.3s; font-weight: 600;
+            position: relative; overflow: hidden;
+        }
+        .nav-link-special::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, #38bdf8, #0ea5e9); opacity: 0; transition: opacity 0.3s;
+            border-radius: 50px; z-index: -1;
+        }
+        .nav-link-special:hover::before { opacity: 0.1; }
+        .nav-link-special:hover { transform: translateY(-2px); }
+        
+        .bg-neural {
+            background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+        
+        .section-title {
+            text-align: center; font-size: 3rem; font-family: 'Playfair Display', serif;
+            font-weight: 700; margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ffffff, #cbd5e1);
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.3); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.1);
+        }
+        
+        .timeline-container { position: relative; max-width: 64rem; margin: 3rem auto; }
+        .timeline-container::before {
+            content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px;
+            background: linear-gradient(180deg, #38bdf8, #0ea5e9, #38bdf8);
+            border-radius: 2px; transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex; margin-bottom: 3rem; align-items: center;
+            opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s forwards;
+        }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .timeline-content {
+            width: 45%; padding: 2rem; position: relative;
+        }
+        .timeline-dot {
+            width: 20px; height: 20px; background: #38bdf8; border-radius: 50%;
+            border: 4px solid #1e293b; position: absolute; left: 50%;
+            transform: translateX(-50%); z-index: 10;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+        }
+        
+        .publication-card {
+            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem;
+            padding: 2rem; transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+        .publication-card:hover {
+            transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .publication-title {
+            font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .publication-venue {
+            color: #38bdf8; font-weight: 600; margin-bottom: 0.75rem;
+        }
+        .publication-authors {
+            color: #94a3b8; margin-bottom: 1rem; font-style: italic;
+        }
+        .publication-abstract {
+            color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;
+        }
+        .publication-tags {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+        }
+        .tech-tag {
+            background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 0.75rem;
+            font-weight: 500; padding: 0.25rem 0.75rem; border-radius: 50px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        
+        .project-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .project-card {
+            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem;
+            padding: 1.5rem; transition: all 0.3s ease; height: fit-content;
+        }
+        .project-card:hover {
+            transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.4);
+        }
+        .project-title {
+            font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 0.75rem;
+        }
+        .project-desc {
+            color: #94a3b8; line-height: 1.5; margin-bottom: 1rem;
+        }
+        .project-links {
+            display: flex; gap: 1rem; margin-bottom: 1rem;
+        }
+        .project-link {
+            color: #38bdf8; text-decoration: none; font-weight: 500;
+            display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s;
+        }
+        .project-link:hover { color: #0ea5e9; }
+        
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .skill-category {
+            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem;
+            padding: 2rem; transition: all 0.3s ease;
+        }
+        .skill-category:hover {
+            transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.4);
+        }
+        .skill-title {
+            font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .skill-list {
+            display: flex; flex-wrap: wrap; gap: 0.5rem;
+        }
+        .skill-item {
+            background: rgba(56, 189, 248, 0.1); color: #38bdf8;
+            padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        
+        .social-links {
+            display: flex; gap: 1.5rem; margin-top: 2rem; justify-content: center;
+        }
+        .social-link {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(56, 189, 248, 0.1); border: 2px solid rgba(56, 189, 248, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: #38bdf8; transition: all 0.3s; text-decoration: none;
+        }
+        .social-link:hover {
+            background: rgba(56, 189, 248, 0.2); transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+        }
+        
+        .mobile-menu { display: none; }
+        @media (max-width: 768px) {
+            .nav-desktop { display: none; }
+            .mobile-menu { display: block; }
+            .timeline-container::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; align-items: flex-start; }
+            .timeline-content { width: 100%; margin-left: 40px; }
+            .timeline-dot { left: 20px; }
+            .section-title { font-size: 2rem; }
+        }
+
+        /* Floating particles background
+        .floating-particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden; pointer-events: none;
+        }
+        .particle {
+            position: absolute; background: rgba(56, 189, 248, 0.1);
+            border-radius: 50%; animation: float 6s ease-in-out infinite;
+        } 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }*/
+        .floating-particles {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            z-index: -1; 
+            overflow: hidden; 
+            pointer-events: none;
+            opacity: 0.3; /* Reduce opacity since we have 3D background */
+        }
+
+        .particle {
+            position: absolute; 
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 50%; 
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.1;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg); 
+                opacity: 0.3;
+            }
+        } 
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 bg-neural">
+
+    <div id="canvas-container">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+
+    <!-- Floating Particles Background -->
+    <div class="floating-particles">
+        <div class="particle" style="width: 8px; height: 8px; left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 12px; height: 12px; left: 20%; top: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; left: 70%; top: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 10px; height: 10px; left: 80%; top: 70%; animation-delay: 3s;"></div>
+        <div class="particle" style="width: 14px; height: 14px; left: 50%; top: 10%; animation-delay: 4s;"></div>
+    </div>
+
+    <header id="header">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="font-serif text-2xl font-bold text-white tracking-wider">Gaurav Bhole</a>
+            <div class="nav-desktop hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+            </div>
+            <a href="life.html" class="nav-link-special group">
+                <span>My Life</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1"></i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-6">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                        Gaurav Bhole
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-blue-400 mb-6 font-medium">
+                        Research Intern at LISP, EPFL
+                    </p>
+                    <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
+                        Deep Learning in Life Sciences • Medical Imaging • Genetics • Genomics
+                        Building solutions to decode the complexities of life sciences using AI
+                    </p>
+                    <div class="social-links">
+                        <a href="mailto:gaurav.bhole@research.iiit.ac.in" class="social-link" title="Email">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/Gaurav2543" target="_blank" class="social-link" title="GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/gaurav-bhole-38604b240/" target="_blank" class="social-link" title="LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://gaurav2543.github.io/myprofile/index.html" target="_blank" class="social-link" title="Website">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-slate-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                            <img src="media/In_the_rocks.JPG" alt="Gaurav Bhole" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-sky-400 to-blue-600 rounded-full opacity-20 animate-pulse"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-sky-600 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="section-title">About Me</h2>
+                <div class="glass-card p-8">
+                    <p class="text-lg text-slate-300 leading-relaxed mb-6">
+                        I am a Research Intern at the Laboratory of Integrative Systems Physiology (LISP) at EPFL, 
+                        working under Dr. Johan Auwerx on aging and behavioral analysis using deep learning approaches. 
+                        My research focuses on developing hierarchical masked autoencoder frameworks to model mouse movement 
+                        trajectories and decode aging patterns from behavioral time series data.
+                    </p>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        Currently pursuing my B.Tech in Computer Science and Master of Science in Computational Natural Sciences 
+                        by Research at IIIT Hyderabad (CGPA: 7.52/10). I am a Research List Award Recipient for 2024-25, 
+                        recognizing excellence in academic and research performance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="section-title">Professional Journey</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="media/EPFL_Logo.svg" alt="EPFL" class="h-12 filter invert">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Research Intern</h3>
+                                    <p class="text-sky-300 font-medium">LISP, École Polytechnique Fédérale de Lausanne (EPFL)</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 mb-2">May 2025 - Present • Lausanne, Switzerland</p>
+                            <p class="text-slate-300">
+                                Adapting hierarchical masked autoencoder frameworks to model mouse movement trajectories and decode aging patterns 
+                                from behavioral time series pose vectors, working with the Healthspan Diversity Panel (~1800 mice from 82 strains).
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="media/global_health_x_logo.jpeg" alt="Global Health X" class="h-12 rounded">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Research Intern</h3>
+                                    <p class="text-sky-300 font-medium">Global Health X</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 mb-2">Jun 2024 - Sept 2024 • Hyderabad, India</p>
+                            <p class="text-slate-300">
+                                Developed conversational AI agents for mental health support using LLM frameworks like DsPy and Langchain. 
+                                Implemented fine-tuning on Meta-Llama-3.1-8B with PEFT for therapeutic contexts.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="media/IIITH_Logo.png" alt="IIIT-H" class="h-12 bg-white p-1 rounded">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Head Teaching Assistant</h3>
+                                    <p class="text-sky-300 font-medium">IIIT Hyderabad</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 mb-2">Aug 2023 - May 2025 • Hyderabad, India</p>
+                            <p class="text-slate-300">
+                                Designed examination papers and led tutorial sessions for Non-Linear Dynamics and Bioinformatics courses.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="media/IIITH_Logo.png" alt="IIIT-H" class="h-12 bg-white p-1 rounded">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Research Student</h3>
+                                    <p class="text-sky-300 font-medium">CCNSB, IIIT Hyderabad</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 mb-2">May 2023 - Present • Hyderabad, India</p>
+                            <p class="text-slate-300">
+                                Conducting research in Genetics and Medical Imaging under Dr. Nita Parekh. Focus on Long-Read DNA sequencing 
+                                for structural variant detection and multi-modal classification strategies for mammographic analysis.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="section-title">Publications & Research</h2>
+                <div class="max-w-6xl mx-auto">
+                    <!-- Mammo-Bench -->
+                    <div class="publication-card">
+                        <h3 class="publication-title">Mammo-Bench: A Large-scale Benchmark Dataset of Mammography Images</h3>
+                        <p class="publication-venue">Accepted at 13th International Conference on Computational Advances in Bio and Medical Sciences (ICCABS), Atlanta</p>
+                        <p class="publication-authors">Gaurav Bhole, Suba S, Nita Parekh</p>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Medical Imaging</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Mammography</span>
+                            <span class="tech-tag">Dataset</span>
+                        </div>
+                        <div class="publication-links">
+                            <button class="publication-button" data-modal="mammo-modal">View Abstract</button>
+                            <a href="https://www.medrxiv.org/content/10.1101/2025.01.31.25321510v1" class="project-link">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- HyperCLSA -->
+                    <div class="publication-card">
+                        <h3 class="publication-title">HyperCLSA: A Hypergraph Contrastive Learning Pipeline for Multi-Omics Data Integration</h3>
+                        <p class="publication-venue">Under review at 11th International Conference on Pattern Recognition and Machine Intelligence (PReMI), Delhi</p>
+                        <p class="publication-authors">Gaurav Bhole, et al.</p>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Multi-Omics</span>
+                            <span class="tech-tag">Hypergraph Learning</span>
+                            <span class="tech-tag">Contrastive Learning</span>
+                            <span class="tech-tag">Cancer Genomics</span>
+                        </div>
+                        <div class="publication-links">
+                            <button class="publication-button" data-modal="hyperclsa-modal">View Abstract</button>
+                            <a href="https://github.com/Gaurav2543/HyperCLSA" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- DFANet -->
+                    <div class="publication-card">
+                        <h3 class="publication-title">DFANet: A Difference Fusion Attention-based method for Semantic Change Detection</h3>
+                        <p class="publication-venue">Under review at Journal of Earth Science Informatics</p>
+                        <p class="publication-authors">Omkar Oak, Rukmini Nazre, Rujuta Budke, Suraj Sawant, Gaurav Bhole</p>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Remote Sensing</span>
+                            <span class="tech-tag">Change Detection</span>
+                            <span class="tech-tag">Attention Mechanisms</span>
+                            <span class="tech-tag">Multi-task Learning</span>
+                        </div>
+                        <div class="publication-links">
+                            <button class="publication-button" data-modal="dfanet-modal">View Abstract</button>
+                            <a href="https://github.com" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- Mouse Movement -->
+                    <div class="publication-card">
+                        <h3 class="publication-title">Deep phenotyping via hierarchical learning of mouse movement</h3>
+                        <p class="publication-venue">Oral Presentation at Computational Biology Symposium 2025, UNIL, Switzerland</p>
+                        <p class="publication-authors">Gaurav Bhole, et al.</p>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Behavioral Analysis</span>
+                            <span class="tech-tag">Aging Research</span>
+                            <span class="tech-tag">Autoencoder</span>
+                            <span class="tech-tag">Systems Biology</span>
+                        </div>
+                        <div class="publication-links">
+                            <button class="publication-button" data-modal="mouse-modal">View Abstract</button>
+                            <a href="https://github.com/Gaurav2543/DVC-hBehaveMAE" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="project-grid">
+                    <!-- Brain Activity Modeling -->
+                    <div class="project-card">
+                        <h3 class="project-title">Modeling Brain Activity During Naturalistic Movie Watching</h3>
+                        <p class="project-desc">
+                            Developed encoding and decoding models using deep MLPs and LSTMs to predict fMRI brain activity from video embeddings, 
+                            achieving high intra-subject accuracy for short film identification from brain activity patterns.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Modeling-Brain-Activity-During-Naturalistic-Movie-Watching" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Neuroscience</span>
+                            <span class="tech-tag">fMRI</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">Deep Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Machine Unlearning -->
+                    <div class="project-card">
+                        <h3 class="project-title">Machine Unlearning for PII Removal from LLMs</h3>
+                        <p class="project-desc">
+                            Developed adaptive Representation Misdirection Unlearning techniques to selectively remove personally identifiable 
+                            information from large language models. Achieved 4th place rankings on both 1B and 7B parameter model leaderboards 
+                            in SemEval-2025 Task 4.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Machine-Unlearning-for-PII-Removal-from-LLMs" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">LLMs</span>
+                            <span class="tech-tag">Privacy</span>
+                            <span class="tech-tag">Machine Unlearning</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+
+                    <!-- Image Captioning FAISS -->
+                    <div class="project-card">
+                        <h3 class="project-title">Image Captioning using FAISS-Accelerated Retrieval</h3>
+                        <p class="project-desc">
+                            Significantly reduced computational time with FAISS for large datasets using a Distributed Representation-Based 
+                            Query Expansion Approach, demonstrating that classical retrieval-based methods can achieve competitive performance 
+                            for image captioning tasks.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Image-Captioning-using-FAISS-Accelerated-Retrieval" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">FAISS</span>
+                            <span class="tech-tag">Multi-modal</span>
+                            <span class="tech-tag">Retrieval</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                    </div>
+
+                    <!-- PEFT Text Summarization -->
+                    <div class="project-card">
+                        <h3 class="project-title">Parameter Efficient Fine Tuning for Text Summarization</h3>
+                        <p class="project-desc">
+                            Implemented and compared three parameter-efficient fine-tuning approaches—Prompt Tuning, LoRA, and traditional 
+                            fine-tuning—on GPT-2 for text summarization using CNN/Daily Mail dataset. Validated that parameter-efficient methods 
+                            achieve comparable performance with significantly reduced computational requirements.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Parameter-Efficient-Fine-Tuning-Methods-for-Text-Summarization" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">PEFT</span>
+                            <span class="tech-tag">LoRA</span>
+                            <span class="tech-tag">GPT-2</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+
+                    <!-- Brain Encoding Decoding -->
+                    <div class="project-card">
+                        <h3 class="project-title">Brain Encoding and Decoding for Visual Cognition</h3>
+                        <p class="project-desc">
+                            Developed bidirectional computational neuroscience pipelines using Natural Scenes Dataset to map between visual 
+                            stimuli and fMRI responses. Compared CNN architectures achieving correlations up to 0.43, revealing insights into 
+                            how deep networks model human visual processing mechanisms.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Brain-Encoding-and-Decoding-for-Visual-Cognition" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Neuroscience</span>
+                            <span class="tech-tag">Visual Processing</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">fMRI</span>
+                        </div>
+                    </div>
+
+                    <!-- Psycholinguistic Surprisal -->
+                    <div class="project-card">
+                        <h3 class="project-title">Tokenization Effects in Psycholinguistic Surprisal Analysis</h3>
+                        <p class="project-desc">
+                            Extended research on surprisal theory by comparing character-level n-gram models, token-level GPT-2 surprisal, 
+                            and character-level surprisal via beam-based marginalization across four eye-tracking corpora. Found that 
+                            marginalized character-level surprisal consistently outperformed token-based approaches.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Tokenization-Effects-in-Psycholinguistic-Surprisal-Analysis" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Psycholinguistics</span>
+                            <span class="tech-tag">Eye-tracking</span>
+                            <span class="tech-tag">Surprisal Theory</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+
+                    <!-- Quantization -->
+                    <div class="project-card">
+                        <h3 class="project-title">Quantization and Model Compression</h3>
+                        <p class="project-desc">
+                            Implemented various model quantization techniques for LLMs including both custom quantization implementations 
+                            and Bitsandbytes integration, focusing on reducing model size while maintaining performance.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Quantization-and-Model-Compression" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Quantization</span>
+                            <span class="tech-tag">Model Compression</span>
+                            <span class="tech-tag">Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- Age Prediction -->
+                    <div class="project-card">
+                        <h3 class="project-title">Age Prediction from Facial Images</h3>
+                        <p class="project-desc">
+                            Developed and compared various CNN and Vision Transformer models for age prediction using facial images. 
+                            Achieved 7th place ranking among 200 contestants in a Kaggle competition, demonstrating effective application 
+                            of computer vision techniques for age estimation.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Age-Prediction-from-Facial-Images" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Vision Transformer</span>
+                            <span class="tech-tag">Kaggle</span>
+                        </div>
+                    </div>
+
+                    <!-- Neural Machine Translation -->
+                    <div class="project-card">
+                        <h3 class="project-title">Neural Machine Translation with Transformer</h3>
+                        <p class="project-desc">
+                            Built a Transformer model from scratch for English-French translation based on the "Attention is All You Need" paper. 
+                            Implemented custom encoder-decoder architecture with self-attention mechanisms and positional encodings.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Neural-Machine-Translation-with-Transformer" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Transformer</span>
+                            <span class="tech-tag">Machine Translation</span>
+                            <span class="tech-tag">Attention</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+
+                    <!-- Text-Based Brain Analysis -->
+                    <div class="project-card">
+                        <h3 class="project-title">Text-Based Brain Encoding and Decoding for Cognitive Science</h3>
+                        <p class="project-desc">
+                            Developed comprehensive computational neuroscience pipeline for bidirectional mapping between textual stimuli and fMRI brain activations. 
+                            Enhanced decoding performance through multi-ROI integration achieving improved 2V2 accuracy and correlation metrics.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Text-Based-Brain-Encoding-and-Decoding-for-Cognitive-Science" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">Neuroscience</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">fMRI</span>
+                            <span class="tech-tag">Cognitive Science</span>
+                        </div>
+                    </div>
+
+                    <!-- Song Lyrics Analysis -->
+                    <div class="project-card">
+                        <h3 class="project-title">Analysis of Song Lyrics for Global and Indian Top Charts</h3>
+                        <p class="project-desc">
+                            Analyzed Indian and Global chart songs using self-similarity matrix algorithms for lyrics segmentation and NLP techniques 
+                            for sentiment analysis. Developed extractive summarization methods and applied Valence-Arousal framework for cross-cultural comparison.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/Analysis-of-Song-Lyrics-for-Global-and-Indian-Top-Charts" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Sentiment Analysis</span>
+                            <span class="tech-tag">Topic Modeling</span>
+                            <span class="tech-tag">Cultural Analysis</span>
+                        </div>
+                    </div>
+
+                    <!-- IMDB Sentiment Analysis -->
+                    <div class="project-card">
+                        <h3 class="project-title">IMDB Movie Review Sentiment Analysis using RNNs and LSTMs</h3>
+                        <p class="project-desc">
+                            Implemented and compared RNN and LSTM architectures for binary sentiment classification on IMDB movie reviews, 
+                            discovering that mean pooling across all timesteps significantly outperformed last-hidden-state approaches.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Gaurav2543/IMDB-Movie-Review-Sentiment-Analysis-using-RNNs-and-LSTMs" class="project-link">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                        <div class="publication-tags">
+                            <span class="tech-tag">RNN</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">Sentiment Analysis</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="section-title">Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="code" class="text-sky-400"></i>
+                            Programming Languages
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">C/C++</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">R</span>
+                            <span class="skill-item">MATLAB</span>
+                            <span class="skill-item">Shell</span>
+                            <span class="skill-item">Assembly</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="brain-circuit" class="text-sky-400"></i>
+                            ML/AI Frameworks
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">TensorFlow</span>
+                            <span class="skill-item">Hugging Face</span>
+                            <span class="skill-item">OpenCV</span>
+                            <span class="skill-item">scikit-learn</span>
+                            <span class="skill-item">FAISS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="dna" class="text-sky-400"></i>
+                            Bioinformatics
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Biopython</span>
+                            <span class="skill-item">Pysam</span>
+                            <span class="skill-item">PyVCF</span>
+                            <span class="skill-item">GATK</span>
+                            <span class="skill-item">BWA</span>
+                            <span class="skill-item">Samtools</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="message-square-code" class="text-sky-400"></i>
+                            LLM & NLP
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Langchain</span>
+                            <span class="skill-item">DSPy</span>
+                            <span class="skill-item">Langgraph</span>
+                            <span class="skill-item">PEFT</span>
+                            <span class="skill-item">LoRA</span>
+                            <span class="skill-item">Transformers</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="terminal-square" class="text-sky-400"></i>
+                            Tools & Technologies
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Vim</span>
+                            <span class="skill-item">Jupyter</span>
+                            <span class="skill-item">SLURM</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-title">
+                            <i data-lucide="globe" class="text-sky-400"></i>
+                            Web Development
+                        </h3>
+                        <div class="skill-list">
+                            <span class="skill-item">React.js</span>
+                            <span class="skill-item">Node.js</span>
+                            <span class="skill-item">Express.js</span>
+                            <span class="skill-item">MongoDB</span>
+                            <span class="skill-item">HTML/CSS</span>
+                            <span class="skill-item">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section id="leadership" class="py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="section-title">Leadership & Service</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <div class="glass-card p-6 text-center">
+                        <i data-lucide="users" class="w-12 h-12 text-sky-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-semibold text-white mb-2">Entrepreneurship Cell</h3>
+                        <p class="text-slate-300 text-sm">Corporate Relations Head</p>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <i data-lucide="party-popper" class="w-12 h-12 text-sky-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-semibold text-white mb-2">Techno-Cultural Fest</h3>
+                        <p class="text-slate-300 text-sm">Corporate Relations Head</p>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <i data-lucide="server" class="w-12 h-12 text-sky-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-semibold text-white mb-2">Server Administrator</h3>
+                        <p class="text-slate-300 text-sm">Computational Biology Server</p>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <i data-lucide="shield" class="w-12 h-12 text-sky-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-semibold text-white mb-2">Football Captain</h3>
+                        <p class="text-slate-300 text-sm">University Team</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="glass-card p-8 max-w-2xl mx-auto">
+                    <p class="text-lg text-slate-300 mb-8">
+                        Interested in collaboration, research opportunities, or just want to discuss the latest in AI and computational biology? 
+                        I'd love to hear from you.
+                    </p>
+                    <div class="social-links justify-center">
+                        <a href="mailto:gaurav.bhole@research.iiit.ac.in" class="social-link" title="Email">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/Gaurav2543" target="_blank" class="social-link" title="GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/gaurav-bhole-38604b240/" target="_blank" class="social-link" title="LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://gaurav2543.github.io/myprofile/index.html" target="_blank" class="social-link" title="Website">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 px-6 border-t border-slate-800">
+        <div class="container mx-auto text-center">
+            <p class="text-slate-400">© 2025 Gaurav Bhole. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.glass-card, .publication-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Mammo-Bench Modal -->
+    <div id="mammo-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 class="modal-title">Mammo-Bench: A Large-scale Benchmark Dataset</h3>
+            <p class="modal-abstract">
+                Breast cancer remains a significant global health concern, and machine learning algorithms and computer-aided detection systems have shown great promise in enhancing the accuracy and efficiency of mammography image analysis. However, there is a critical need for large, benchmark datasets for training deep learning models for breast cancer detection. In this work we developed Mammo-Bench, a large-scale benchmark dataset of mammography images, by collating data from seven well-curated resources, viz., DDSM, INbreast, KAU-BCMD, CMMD, CDD-CESM, DMID, and RSNA Screening Dataset. To ensure consistency across images from diverse sources while preserving clinically relevant features, a preprocessing pipeline that includes breast segmentation, pectoral muscle removal, and intelligent cropping is proposed. The dataset consists of 74,436 high-quality mammographic images from 26,500 patients across 7 countries and is one of the largest open-source mammography databases to the best of our knowledge. To show the efficacy of training on the large dataset, performance of ResNet101 architecture was evaluated on Mammo-Bench and the results compared by training independently on a few member datasets and an external dataset, VinDr-Mammo. An accuracy of 78.8% (with data augmentation of the minority classes) and 77.8% (without data augmentation) was achieved on the proposed benchmark dataset, compared to the other datasets for which accuracy varied from 25 – 69%. Noticeably, improved prediction of the minority classes is observed with the Mammo-Bench dataset. These results establish baseline performance and demonstrate Mammo-Bench's utility as a comprehensive resource for developing and evaluating mammography analysis systems.
+            </p>
+        </div>
+    </div>
+
+    <!-- HyperCLSA Modal -->
+    <div id="hyperclsa-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 class="modal-title">HyperCLSA: Hypergraph Contrastive Learning</h3>
+            <p class="modal-abstract">
+                Accurate molecular subtyping of cancer is crucial for advancing personalized medicine. Although multiomics data contain valuable predictive information, effectively integrating them is challenging due to differences across modalities, high dimensionality, and complex cross-modal biological interactions. We propose HyperCLSA (Hypergraph Contrastive Learning with Self-Attention), a novel deep learning framework for efficient multi-omics integration in breast cancer subtyping. HyperCLSA combines hypergraph-based sample encoding, supervised contrastive learning for latent space alignment, and multi-head self-attention for adaptive fusion of omics modalities. Evaluated on The Cancer Genome Atlas (TCGA) Breast Cancer dataset for PAM50 subtype classification, HyperCLSA achieves a significant performance improvement over state-of-the-art baselines. Our results demonstrate HyperCLSA's effectiveness in extracting complementary information across heterogeneous omics sources, providing a robust framework for molecular characterization of breast cancer.
+            </p>
+        </div>
+    </div>
+
+    <!-- DFANet Modal -->
+    <div id="dfanet-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 class="modal-title">DFANet: Difference Fusion Attention Network</h3>
+            <p class="modal-abstract">
+                Semantic change detection (SCD) in remote sensing imagery has emerged as a critical technique for monitoring detailed landscape transitions across diverse environments. Despite advances in deep learning approaches including CNNs and Transformers, existing SCD methods struggle with inefficient feature integration, limited receptive fields, sub-optimal fusion of temporal information, and high computational complexity for high-resolution imagery. This paper proposes a Difference Fusion Attention Network (DFANet), a novel multi-task learning framework for SCD in high-resolution remote sensing imagery. DFANet employs a dual encoder-decoder architecture with dedicated paths for Land Cover Mapping (LCM) and Change Detection (CD). The Difference Fusion module leverages channel attention mechanisms to highlight meaningful changes while suppressing noise in feature differences, enabling more effective detection of land cover transitions between temporal images. We incorporate attention mechanisms to focus on informative regions and dense feature connections for improved information flow. We integrate LCM with CD through multi-level supervision and a refinement module that leverages complementary information between tasks. To address class imbalance challenges, we employ a specialized loss function combining cross-entropy and Tversky loss with class-weighted balancing. Extensive experiments on TERRA-CD and SECOND datasets demonstrate DFANet's superior performance over existing methods, namely the four HRSCD Strategies, Bi-SRNet, and Changemask. Our approach achieves F1-scores of 94.64% and 82.45%, Kappa coefficients of 62.51% and 49.17%, and mIoU values of 73.30% and 74.12%, on TERRA-CD and SECOND respectively. DFANet establishes a new benchmark for SCD in remote sensing applications.
+            </p>
+        </div>
+    </div>
+
+    <!-- Mouse Movement Modal -->
+    <div id="mouse-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 class="modal-title">Deep phenotyping via hierarchical learning</h3>
+            <p class="modal-abstract">
+                Despite growing interest in aging and healthspan, most behavioral studies lack the scale, duration and genetic diversity needed to model complex aging trajectories. Existing approaches often rely on short-term behavioural assays, focus on single genetic backgrounds, or overlook the hierarchical organization of behavior, limiting their ability to link movement patterns to aging and genetic backgrounds. We attempt to address these challenges by presenting a unified framework for deep phenotyping of aging in a large mouse genetic reference population (>1800 mice across 82 strains) named HDP (Healthspan Diversity Panel). We combine continuous, lifelong 24-hour activity monitoring via DVC cages with longitudinal cardiometabolic profiling and a biobank of over 50,000 tissue samples, including deep genotyping data and longitudinal molecular profiling of tissues such as skeletal muscles and brain. To model the inherently hierarchical structure of natural behavior, we adapt hBehaveMAE, a masked autoencoder originally developed to capture pose vector trajectories from time series data. By modeling daily movement trajectories we aim to add layers of biological interpretation to the latent representations of complex activity, by using the vast collection of phenotypic and annotated features of the HDP. Our goal is to use those learned embeddings for accurate genetic mapping of aging, in parallel to develop a framework to predict features such as age and strain identity from DVC recordings. By integrating all the HDP data in downstream systems genetics studies we aim at opening new avenues for linking natural movement to clinical and molecular aging and the underlying genetic architecture.
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="scripts/3d-background.js"></script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Bhole | Research Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="bg-slate-900 text-slate-300">
 
@@ -38,7 +1081,7 @@
         <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
             <div class="flex-1">
                 <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4 leading-tight">Gaurav Bhole</h1>
-                <p class="text-xl md:text-2xl text-sky-300 mb-6">Research Assistant, LISP, EPFL | Deep Learning in Life Sciences</p>
+                <p class="text-xl md:text-2xl text-sky-300 mb-6">Research Intern, LISP, EPFL | Deep Learning in Life Sciences</p>
                 <p class="max-w-2xl text-slate-400 mb-8 text-lg">
                     I build intelligent systems to decode the complexities of biology. My research leverages deep learning to analyze medical imaging and genomic data, aiming to create impactful solutions in healthcare.
                 </p>
@@ -59,7 +1102,7 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <img src="media/EPFL_Logo.svg" alt="EPFL Logo" class="timeline-logo" style="filter: brightness(0) invert(1);">
-                        <h3 class="timeline-title">Research Assistant</h3>
+                        <h3 class="timeline-title">Research Intern</h3>
                         <p class="timeline-subtitle">EPFL, LISP - School of Life Sciences</p>
                         <p class="timeline-date">July 2025 - Present</p>
                     </div>
@@ -182,4 +1225,4 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/3d-background.js"></script>
 </body>
-</html>
+</html> -->

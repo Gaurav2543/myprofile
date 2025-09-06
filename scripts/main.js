@@ -1,22 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     // Initialize Lucide Icons if the function exists
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
 
     // --- Modal Logic for Publications (on index.html) ---
-    const modalButtons = document.querySelectorAll('[data-modal-target]');
+    const modalButtons = document.querySelectorAll('[data-modal]');
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.modal-close');
+
     if (modalButtons.length > 0) {
         const closeButtons = document.querySelectorAll('.modal-close');
 
         modalButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const modalId = button.getAttribute('data-modal-target');
+                const modalId = button.getAttribute('data-modal');
                 const modal = document.getElementById(modalId);
                 if (modal) {
-                    modal.style.display = 'flex';
+                    modal.classList.remove('hidden');
                 }
             });
+        });
+    
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.add('hidden');
+                });
+            }
         });
 
         closeButtons.forEach(button => {
