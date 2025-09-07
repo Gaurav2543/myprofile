@@ -457,17 +457,6 @@ if (typeof THREE !== 'undefined') {
         brain.rotation.z = elapsedTime * 0.2;
         brain.position.y += Math.cos(elapsedTime * 0.35) * 0.015;
         
-        // Animate organs
-        heart.rotation.x = elapsedTime * 0.3;
-        heart.rotation.y = elapsedTime * 0.4;
-        heart.position.y += Math.sin(elapsedTime * 0.6) * 0.02;
-        
-        lung.rotation.z = elapsedTime * 0.2;
-        lung.position.y += Math.cos(elapsedTime * 0.45) * 0.018;
-        
-        kidney.rotation.y = elapsedTime * 0.35;
-        kidney.position.y += Math.sin(elapsedTime * 0.5) * 0.012;
-        
         // Animate other elements
         heatmapGroup.rotation.y = elapsedTime * 0.15;
         heatmapGroup.children.forEach((cube, index) => {
