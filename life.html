@@ -94,9 +94,10 @@
             </div>
         </section>
 
+        <!-- Adventures Gallery -->
         <section id="adventures" class="py-24 fade-in-section">
             <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
-            <div class="adventure-gallery">
+            <div class="adventure-gallery-two-column">
                 <!-- River Jumping Video -->
                 <div class="adventure-item">
                     <video autoplay muted loop playsinline class="w-full h-full object-cover">
@@ -112,7 +113,7 @@
                     </video>
                     <div class="adventure-item-title">Road Trips</div>
                 </div>
-        
+
                 <!-- Thunder/Lightning Adventure -->
                 <div class="adventure-item">
                     <video autoplay muted loop playsinline class="w-full h-full object-cover">
@@ -127,16 +128,188 @@
                     <div class="adventure-item-title">Summit Conquests</div>
                 </div>
 
-                <!-- Thunder/Lightning Adventure -->
+                <!-- Night Driving Adventure -->
                 <div class="adventure-item">
                     <video autoplay muted loop playsinline class="w-full h-full object-cover">
                         <source src="media/videos/Driving.mp4" type="video/mp4">
                     </video>
                     <div class="adventure-item-title">Night Trips</div>
                 </div>
-        
-                <!-- Scuba Diving -->
+
+                <!-- Lost in the Jungle -->
                 <div class="adventure-item">
+                    <img src="media/images/OnScooty.JPG" alt="Lost in the Jungle" class="w-full h-full object-cover">
+                    <div class="adventure-item-title">Lost in the Jungle</div>
+                </div>
+
+                <!-- Scuba Diving Placeholder -->
+                <div class="adventure-item adventure-placeholder">
+                    <div class="placeholder-content">
+                        <i data-lucide="waves" class="w-16 h-16 text-amber-300 mb-4"></i>
+                        <div class="adventure-item-title">Scuba Diving</div>
+                        <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
+                    </div>
+                </div>
+
+                <!-- River Rafting Placeholder -->
+                <div class="adventure-item adventure-placeholder">
+                    <div class="placeholder-content">
+                        <i data-lucide="kayak" class="w-16 h-16 text-amber-300 mb-4"></i>
+                        <div class="adventure-item-title">River Rafting</div>
+                        <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main> 
+    <script src="scripts/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Bhole | Life & Adventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        body {
+            background-color: #111827;
+        }
+        .life-bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 1)), url('media/images/Glacier.JPG');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300">
+
+    <div class="life-bg-image"></div>
+
+    <header id="header">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-2xl font-bold text-white tracking-wider">Gaurav Bhole</a>
+            <a href="index.html" class="nav-link-special group">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 transform transition-transform duration-300 group-hover:-translate-x-1"></i>
+                <span>My Research</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="relative z-10 container mx-auto px-6">
+        <section id="life-home" class="min-h-screen flex flex-col justify-center text-center">
+            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-4 leading-tight">Beyond The Code</h1>
+            <p class="text-xl md:text-2xl text-amber-300">Chasing Adrenaline, Goals, and New Horizons.</p>
+        </section>
+
+        <section id="story" class="py-24 fade-in-section">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title text-amber-300">A Life in Motion</h2>
+                <p class="mt-6 text-lg text-slate-300">
+                    I believe that the most profound discoveries aren't just found in data, but in experience. The discipline of sport, the humility of travel, and the focus required for adventure sports all shape my approach to research—making me more creative, resilient, and collaborative.
+                </p>
+            </div>
+        </section>
+
+        <section id="ai-planner" class="py-24 fade-in-section">
+            <div class="max-w-3xl mx-auto text-center glass-card p-8 md:p-12">
+                <h2 class="section-title text-amber-300">✨ Adventure Planner</h2>
+                <p class="mt-4 mb-6 text-slate-300">Want to plan your next trip? Describe the kind of adventure you're looking for, and let my AI assistant generate some ideas for you.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <input type="text" id="adventure-prompt" placeholder="e.g., 'a 3-day relaxing beach trip in Europe'" class="w-full bg-slate-800 border border-slate-600 rounded-md px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <button id="generate-adventure-btn" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-6 rounded-md transition duration-300 flex-shrink-0">Generate Ideas</button>
+                </div>
+                <div id="loading-indicator" class="hidden justify-center items-center gap-2 text-slate-400 mt-6">
+                    <svg class="animate-spin h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    <span>Generating your next adventure...</span>
+                </div>
+                <div id="adventure-result"></div>
+            </div>
+        </section>
+
+        <section id="football" class="py-24 fade-in-section">
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-2">
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-2xl">
+                        <video autoplay muted loop playsinline poster="media/images/Me_with_Trophy.jpeg" class="w-full h-full object-cover">
+                            <source src="media/videos/Trophy_Lifting.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="lg:col-span-3">
+                    <i data-lucide="award" class="w-16 h-16 text-amber-300 mb-4"></i>
+                    <h2 class="text-4xl font-serif font-bold text-white mb-4">A Captain's Journey</h2>
+                    <p class="text-xl text-amber-300 font-semibold mb-6">Ending a 9-Year Wait for Glory</p>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        As one of three co-captains, I had the privilege of leading a team that rewrote our university's football story. After a nine-year drought, our collective dedication and strategy culminated in a championship victory. This experience wasn't about a single leader, but about shared responsibility and a unified goal. It taught me invaluable lessons in collaboration and perseverance that I apply to every aspect of my life.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="adventures" class="py-24 fade-in-section">
+            <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
+            <div class="adventure-gallery-enhanced">
+                <div class="adventure-item-enhanced">
+                    <video autoplay muted loop playsinline class="adventure-media">
+                        <source src="media/videos/River_Jumping_Aare.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">River Jumping</div>
+                </div>
+        
+                <div class="adventure-item-enhanced">
+                    <video autoplay muted loop playsinline class="adventure-media">
+                        <source src="media/videos/ScootyGokarna.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Road Trips</div>
+                </div>
+        
+                <div class="adventure-item-enhanced">
+                    <video autoplay muted loop playsinline class="adventure-media">
+                        <source src="media/videos/ThunderJungle.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Storm Chasing</div>
+                </div>
+        
+                <div class="adventure-item-enhanced">
+                    <img src="media/images/MountainTop.jpg" alt="Mountain Peak" class="adventure-media">
+                    <div class="adventure-item-title">Summit Conquests</div>
+                </div>
+        
+                <div class="adventure-item-enhanced">
+                    <video autoplay muted loop playsinline class="adventure-media">
+                        <source src="media/videos/Driving.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Night Trips</div>
+                </div>
+
+                <div class="adventure-item">
+                    <img src="media/images/OnScooty.JPG" alt="Lost in the Jungle" class="w-full h-full object-cover">
+                    <div class="adventure-item-title">Lost in the Jungle</div>
+                </div>
+        
+                <div class="adventure-item-enhanced adventure-placeholder">
                     <div class="placeholder-content">
                         <i data-lucide="waves" class="w-16 h-16 text-amber-300 mb-4"></i>
                         <div class="adventure-item-title">Scuba Diving</div>
@@ -144,30 +317,16 @@
                     </div>
                 </div>
         
-                <!-- River Rafting - Placeholder -->
-                <div class="adventure-item adventure-placeholder">
+                <div class="adventure-item-enhanced adventure-placeholder">
                     <div class="placeholder-content">
-                        <i data-lucide="waves" class="w-16 h-16 text-amber-300 mb-4"></i>
+                        <i data-lucide="kayak" class="w-16 h-16 text-amber-300 mb-4"></i>
                         <div class="adventure-item-title">River Rafting</div>
-                        <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
-                    </div>
-                </div>
-        
-                <!-- Deep Sea Diving - Placeholder -->
-                <div class="adventure-item adventure-placeholder">
-                    <div class="placeholder-content">
-                        <i data-lucide="fish" class="w-16 h-16 text-amber-300 mb-4"></i>
-                        <div class="adventure-item-title">Deep Sea Exploration</div>
                         <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
                     </div>
                 </div>
             </div>
         </section>
-        
 
-
-
-        <!-- Adventures Gallery
         <section id="adventures" class="py-24 fade-in-section">
             <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
             <div class="adventure-gallery">
@@ -184,8 +343,8 @@
                 <div class="adventure-item"><img src="media/MountainTop.JPG" alt="Trekking"><div class="adventure-item-title">Hiking</div></div>
                 <div class="adventure-item"><img src="https://placehold.co/600x800/312e81/FFFFFF?text=Travel" alt="Travel"><div class="adventure-item-title">Travel</div></div> 
             </div>
-        </section> 
-    </main>
+        </section>
+    </main> 
     <script src="scripts/main.js"></script>
 </body>
-</html>
+</html> -->
