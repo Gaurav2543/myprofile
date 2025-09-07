@@ -155,8 +155,9 @@ if (typeof THREE !== 'undefined') {
         dnaGroup.add(basePair);
     }
     
-    dnaGroup.position.x = -15;
-    scene.add(dnaGroup);
+    dnaGroup.position.x = 5;
+
+    scene.add(dnaGroup)
 
     // Research Artifacts Group
     const artifactsGroup = new THREE.Group();
@@ -439,7 +440,7 @@ if (typeof THREE !== 'undefined') {
         dnaGroup.rotation.y = elapsedTime * 0.4;
         dnaGroup.rotation.x = Math.sin(elapsedTime * 0.25) * 0.15;
         dnaGroup.position.y = Math.sin(elapsedTime * 0.3) * 2;
-        
+
         // Animate neural network nodes
         nodes.forEach(node => {
             const userData = node.userData;
