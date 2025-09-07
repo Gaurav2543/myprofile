@@ -56,10 +56,10 @@
             </div>
         </section>
 
-        <!-- AI Adventure Planner Section -->
+        <!-- Adventure Planner Section -->
         <section id="ai-planner" class="py-24 fade-in-section">
             <div class="max-w-3xl mx-auto text-center glass-card p-8 md:p-12">
-                <h2 class="section-title text-amber-300">✨ AI Adventure Planner</h2>
+                <h2 class="section-title text-amber-300">✨ Adventure Planner</h2>
                 <p class="mt-4 mb-6 text-slate-300">Want to plan your next trip? Describe the kind of adventure you're looking for, and let my AI assistant generate some ideas for you.</p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-6">
                     <input type="text" id="adventure-prompt" placeholder="e.g., 'a 3-day relaxing beach trip in Europe'" class="w-full bg-slate-800 border border-slate-600 rounded-md px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400">
@@ -94,26 +94,96 @@
             </div>
         </section>
 
-        <!-- Adventures Gallery -->
         <section id="adventures" class="py-24 fade-in-section">
             <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
             <div class="adventure-gallery">
-                <!-- Skydiving Video -->
+                <!-- River Jumping Video -->
                 <div class="adventure-item">
-                    <video autoplay muted loop playsinline>
-                        <!-- REPLACE with your skydiving video URL -->
-                        <source src="media/River_Jumping_Aare.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="assets/videos/River_Jumping_Aare.mp4" type="video/mp4">
                     </video>
-                    <div class="adventure-item-title">Skydiving</div>
+                    <div class="adventure-item-title">River Jumping</div>
                 </div>
-                <!-- Other Adventure Images -->
-                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/0e7490/FFFFFF?text=Scuba+Diving" alt="Scuba Diving"><div class="adventure-item-title">Scuba Diving</div></div> -->
-                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/075985/FFFFFF?text=Rafting" alt="Rafting"><div class="adventure-item-title">Rafting</div></div> -->
-                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/0c4a6e/FFFFFF?text=Glacial+Swim" alt="Glacial Swim"><div class="adventure-item-title">Glacial Swimming</div></div> -->
-                <div class="adventure-item"><img src="media/MountainTop.JPG" alt="Trekking"><div class="adventure-item-title">Hiking</div></div>
-                <!-- <div class="adventure-item"><img src="https://placehold.co/600x800/312e81/FFFFFF?text=Travel" alt="Travel"><div class="adventure-item-title">Travel</div></div> -->
+        
+                <!-- Hiking -->
+                <div class="adventure-item">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="assets/videos/HikingUp.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Mountain Hiking</div>
+                </div>
+        
+                <!-- Thunder/Lightning Adventure -->
+                <div class="adventure-item">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="assets/videos/ThunderJungle.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Storm Chasing</div>
+                </div>
+        
+                <!-- Scuba Diving -->
+                <div class="adventure-item">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="assets/videos/Diving.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Scuba Diving</div>
+                </div>
+        
+                <!-- Scooter Adventure -->
+                <div class="adventure-item">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="assets/videos/ScootyGokarna.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">Road Trips</div>
+                </div>
+        
+                <!-- Mountain Peak -->
+                <div class="adventure-item">
+                    <img src="assets/images/MountainTop.jpg" alt="Mountain Peak" class="w-full h-full object-cover">
+                    <div class="adventure-item-title">Summit Conquests</div>
+                </div>
+        
+                <!-- River Rafting - Placeholder -->
+                <div class="adventure-item adventure-placeholder">
+                    <div class="placeholder-content">
+                        <i data-lucide="waves" class="w-16 h-16 text-amber-300 mb-4"></i>
+                        <div class="adventure-item-title">River Rafting</div>
+                        <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
+                    </div>
+                </div>
+        
+                <!-- Deep Sea Diving - Placeholder -->
+                <div class="adventure-item adventure-placeholder">
+                    <div class="placeholder-content">
+                        <i data-lucide="fish" class="w-16 h-16 text-amber-300 mb-4"></i>
+                        <div class="adventure-item-title">Deep Sea Exploration</div>
+                        <p class="text-sm text-slate-400 mt-2">Coming Soon</p>
+                    </div>
+                </div>
             </div>
         </section>
+        
+
+
+
+        <!-- Adventures Gallery
+        <section id="adventures" class="py-24 fade-in-section">
+            <h2 class="section-title text-amber-300 mb-12">The Adventure Log</h2>
+            <div class="adventure-gallery">
+                <div class="adventure-item">
+                    <video autoplay muted loop playsinline>
+
+                        <source src="media/River_Jumping_Aare.mp4" type="video/mp4">
+                    </video>
+                    <div class="adventure-item-title">River Jumping</div>
+                </div>
+                <div class="adventure-item"><img src="https://placehold.co/600x800/0e7490/FFFFFF?text=Scuba+Diving" alt="Scuba Diving"><div class="adventure-item-title">Scuba Diving</div></div> 
+                <div class="adventure-item"><img src="https://placehold.co/600x800/075985/FFFFFF?text=Rafting" alt="Rafting"><div class="adventure-item-title">Rafting</div></div>
+                <div class="adventure-item"><img src="https://placehold.co/600x800/0c4a6e/FFFFFF?text=Glacial+Swim" alt="Glacial Swim"><div class="adventure-item-title">Glacial Swimming</div></div> 
+                <div class="adventure-item"><img src="media/MountainTop.JPG" alt="Trekking"><div class="adventure-item-title">Hiking</div></div>
+                <div class="adventure-item"><img src="https://placehold.co/600x800/312e81/FFFFFF?text=Travel" alt="Travel"><div class="adventure-item-title">Travel</div></div> 
+            </div>
+        </section> 
     </main>
     <script src="scripts/main.js"></script>
 </body>

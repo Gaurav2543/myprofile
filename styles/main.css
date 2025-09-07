@@ -351,6 +351,106 @@ body {
 .adventure-item img { width: 100%; height: 100%; object-fit: cover; }
 .adventure-item-title { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; color: white; font-weight: 700; font-size: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
 
+.adventure-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.adventure-item {
+    position: relative;
+    height: 400px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+}
+
+.adventure-item:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.adventure-item video,
+.adventure-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.adventure-item:hover video,
+.adventure-item:hover img {
+    transform: scale(1.1);
+}
+
+.adventure-item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Playfair Display', serif;
+}
+
+.adventure-placeholder {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.2));
+    border: 2px dashed rgba(251, 191, 36, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-content {
+    text-align: center;
+    color: #f59e0b;
+}
+
+.adventure-placeholder .adventure-item-title {
+    position: static;
+    background: none;
+    color: #f59e0b;
+    padding: 0;
+    margin-bottom: 0.5rem;
+}
+
+.adventure-placeholder:hover {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.3));
+    border-color: rgba(251, 191, 36, 0.5);
+}
+
+#science-humor .glass-card {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#science-humor .glass-card:hover {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#science-humor img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#science-humor img:hover {
+    animation: subtle-glow 2s ease-in-out infinite;
+}
+
+
 /* --- RESPONSIVE ADJUSTMENTS ---
 @media (max-width: 768px) {
     .timeline-container::after { left: 20px; }
@@ -365,7 +465,36 @@ body {
         margin: 0;
         max-width: none;
     }
+    #science-humor .glass-card {
+        padding: 1.5rem;
+    }
+    
+    #science-humor img {
+        border-radius: 0.5rem;
+    }
+
+    .adventure-gallery {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .adventure-item {
+        height: 300px;
+    }
+    
+    .adventure-item-title {
+        font-size: 1.25rem;
+        padding: 1.5rem;
+    }
+
 }
+
+/* Light animation for the poster */
+@keyframes subtle-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.2); }
+}
+
 
 /* Mobile responsiveness
 @media (max-width: 768px) {

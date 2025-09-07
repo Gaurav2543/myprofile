@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function generateAdventure() {
         // IMPORTANT: PASTE YOUR GOOGLE AI STUDIO API KEY HERE
-        const apiKey = "AIzaSyDPFUIMuOmSHOthQ6c5Wafel7CLluSLAB4"; 
+        const apiKey = "AIzaSyDN8OLPhm78ceTU6IXmSggUIsOasLRiXH0"; 
 
         const userPrompt = promptInput.value.trim();
         if (!userPrompt) {
