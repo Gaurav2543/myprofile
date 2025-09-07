@@ -186,48 +186,6 @@ if (typeof THREE !== 'undefined') {
     brain.position.set(-12, -6, 8);
     artifactsGroup.add(brain);
 
-    // Floating Organs Group
-    const organsGroup = new THREE.Group();
-    
-    // Heart (torus knot)
-    const heartGeometry = new THREE.TorusKnotGeometry(0.8, 0.3, 100, 16);
-    const heartMaterial = new THREE.MeshStandardMaterial({
-        color: 0xdc2626,
-        metalness: 0.4,
-        roughness: 0.6
-    });
-    const heart = new THREE.Mesh(heartGeometry, heartMaterial);
-    heart.position.set(18, 6, 10);
-    organsGroup.add(heart);
-
-    // Lung (ellipsoid)
-    const lungGeometry = new THREE.SphereGeometry(1, 16, 16);
-    lungGeometry.scale(1.5, 1, 0.7);
-    const lungMaterial = new THREE.MeshStandardMaterial({
-        color: 0xf97316,
-        metalness: 0.3,
-        roughness: 0.7,
-        transparent: true,
-        opacity: 0.8
-    });
-    const lung = new THREE.Mesh(lungGeometry, lungMaterial);
-    lung.position.set(-18, 8, -12);
-    organsGroup.add(lung);
-
-    // Kidney (bean shape using scaled sphere)
-    const kidneyGeometry = new THREE.SphereGeometry(0.8, 16, 16);
-    kidneyGeometry.scale(1.2, 0.8, 0.6);
-    const kidneyMaterial = new THREE.MeshStandardMaterial({
-        color: 0x7c2d12,
-        metalness: 0.4,
-        roughness: 0.5
-    });
-    const kidney = new THREE.Mesh(kidneyGeometry, kidneyMaterial);
-    kidney.position.set(15, -10, -8);
-    organsGroup.add(kidney);
-
-    artifactsGroup.add(organsGroup);
-
     // Gene Expression Heatmap (grid of cubes)
     const heatmapGroup = new THREE.Group();
     const cubeGeometry = new THREE.BoxGeometry(0.4, 0.4, 0.4);
@@ -359,9 +317,9 @@ if (typeof THREE !== 'undefined') {
     const researchTerms = [
         'Deep Learning', 'Medical Imaging', 'Genomics', 'fMRI Analysis',
         'Neural Networks', 'Mammography', 'Multi-Omics', 'Bioinformatics',
-        'Machine Learning', 'Computer Vision', 'Structural Variants', 'EPFL Research',
+        'Machine Learning', 'Computer Vision', 'Structural Variants',
         'Behavioral Analysis', 'DNA Sequencing', 'PyTorch', 'Transformers',
-        'HyperCLSA', 'Autoencoder', 'LISP Lab', 'Aging Research'
+        'Autoencoder', 'Aging Research'
     ];
 
     function createTextTexture(text) {
