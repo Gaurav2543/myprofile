@@ -90,30 +90,30 @@ if (typeof THREE !== 'undefined') {
     }
 
     // Enhanced DNA Double Helix
-    const dnaGroup = new THREE.Group();
-    const helixRadius = 2.5;
-    const helixHeight = 25;
-    const turns = 8;
+    // const dnaGroup = new THREE.Group();
+    // const helixRadius = 2.5;
+    // const helixHeight = 25;
+    // const turns = 8;
     
-    const points1 = [];
-    const points2 = [];
+    // const points1 = [];
+    // const points2 = [];
     
-    for (let i = 0; i <= 300; i++) {
-        const t = (i / 300) * turns * Math.PI * 2;
-        const y = (i / 300) * helixHeight - helixHeight / 2;
+    // for (let i = 0; i <= 300; i++) {
+    //     const t = (i / 300) * turns * Math.PI * 2;
+    //     const y = (i / 300) * helixHeight - helixHeight / 2;
         
-        points1.push(new THREE.Vector3(
-            Math.cos(t) * helixRadius,
-            y,
-            Math.sin(t) * helixRadius
-        ));
+    //     points1.push(new THREE.Vector3(
+    //         Math.cos(t) * helixRadius,
+    //         y,
+    //         Math.sin(t) * helixRadius
+    //     ));
         
-        points2.push(new THREE.Vector3(
-            Math.cos(t + Math.PI) * helixRadius,
-            y,
-            Math.sin(t + Math.PI) * helixRadius
-        ));
-    }
+    //     points2.push(new THREE.Vector3(
+    //         Math.cos(t + Math.PI) * helixRadius,
+    //         y,
+    //         Math.sin(t + Math.PI) * helixRadius
+    //     ));
+    // }
     
     const curve1 = new THREE.CatmullRomCurve3(points1);
     const curve2 = new THREE.CatmullRomCurve3(points2);
@@ -132,32 +132,32 @@ if (typeof THREE !== 'undefined') {
     const strand1 = new THREE.Mesh(tubeGeometry1, tubeMaterial);
     const strand2 = new THREE.Mesh(tubeGeometry2, tubeMaterial);
     
-    dnaGroup.add(strand1, strand2);
+    // dnaGroup.add(strand1, strand2);
     
-    // Enhanced base pairs with colors
-    const basePairColors = [0xff6b6b, 0x4ecdc4, 0x45b7d1, 0xf9ca24];
+    // // Enhanced base pairs with colors
+    // const basePairColors = [0xff6b6b, 0x4ecdc4, 0x45b7d1, 0xf9ca24];
     
-    for (let i = 0; i < points1.length; i += 20) {
-        const basePairGeometry = new THREE.CylinderGeometry(0.04, 0.04, helixRadius * 2, 8);
-        const basePairMaterial = new THREE.MeshStandardMaterial({ 
-            color: basePairColors[i % basePairColors.length], 
-            metalness: 0.6, 
-            roughness: 0.4,
-            emissive: basePairColors[i % basePairColors.length],
-            emissiveIntensity: 0.05
-        });
-        const basePair = new THREE.Mesh(basePairGeometry, basePairMaterial);
+    // for (let i = 0; i < points1.length; i += 20) {
+    //     const basePairGeometry = new THREE.CylinderGeometry(0.04, 0.04, helixRadius * 2, 8);
+    //     const basePairMaterial = new THREE.MeshStandardMaterial({ 
+    //         color: basePairColors[i % basePairColors.length], 
+    //         metalness: 0.6, 
+    //         roughness: 0.4,
+    //         emissive: basePairColors[i % basePairColors.length],
+    //         emissiveIntensity: 0.05
+    //     });
+    //     const basePair = new THREE.Mesh(basePairGeometry, basePairMaterial);
         
-        basePair.position.copy(points1[i]);
-        basePair.lookAt(points2[i]);
-        basePair.rotateZ(Math.PI / 2);
+    //     basePair.position.copy(points1[i]);
+    //     basePair.lookAt(points2[i]);
+    //     basePair.rotateZ(Math.PI / 2);
         
-        dnaGroup.add(basePair);
-    }
+    //     dnaGroup.add(basePair);
+    // }
     
-    dnaGroup.position.x = 5;
+    // dnaGroup.position.x = 5;
 
-    scene.add(dnaGroup)
+    // scene.add(dnaGroup)
 
     // Research Artifacts Group
     const artifactsGroup = new THREE.Group();
@@ -436,10 +436,10 @@ if (typeof THREE !== 'undefined') {
     function animate() {
         const elapsedTime = clock.getElapsedTime();
         
-        // Enhanced DNA animation
-        dnaGroup.rotation.y = elapsedTime * 0.4;
-        dnaGroup.rotation.x = Math.sin(elapsedTime * 0.25) * 0.15;
-        dnaGroup.position.y = Math.sin(elapsedTime * 0.3) * 2;
+        // // Enhanced DNA animation
+        // dnaGroup.rotation.y = elapsedTime * 0.4;
+        // dnaGroup.rotation.x = Math.sin(elapsedTime * 0.25) * 0.15;
+        // dnaGroup.position.y = Math.sin(elapsedTime * 0.3) * 2;
 
         // Animate neural network nodes
         nodes.forEach(node => {
