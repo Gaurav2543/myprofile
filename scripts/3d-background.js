@@ -91,29 +91,29 @@ if (typeof THREE !== 'undefined') {
 
     // Enhanced DNA Double Helix
     // const dnaGroup = new THREE.Group();
-    // const helixRadius = 2.5;
-    // const helixHeight = 25;
-    // const turns = 8;
+    const helixRadius = 2.5;
+    const helixHeight = 25;
+    const turns = 8;
     
-    // const points1 = [];
-    // const points2 = [];
+    const points1 = [];
+    const points2 = [];
     
-    // for (let i = 0; i <= 300; i++) {
-    //     const t = (i / 300) * turns * Math.PI * 2;
-    //     const y = (i / 300) * helixHeight - helixHeight / 2;
+    for (let i = 0; i <= 300; i++) {
+        const t = (i / 300) * turns * Math.PI * 2;
+        const y = (i / 300) * helixHeight - helixHeight / 2;
         
-    //     points1.push(new THREE.Vector3(
-    //         Math.cos(t) * helixRadius,
-    //         y,
-    //         Math.sin(t) * helixRadius
-    //     ));
+        points1.push(new THREE.Vector3(
+            Math.cos(t) * helixRadius,
+            y,
+            Math.sin(t) * helixRadius
+        ));
         
-    //     points2.push(new THREE.Vector3(
-    //         Math.cos(t + Math.PI) * helixRadius,
-    //         y,
-    //         Math.sin(t + Math.PI) * helixRadius
-    //     ));
-    // }
+        points2.push(new THREE.Vector3(
+            Math.cos(t + Math.PI) * helixRadius,
+            y,
+            Math.sin(t + Math.PI) * helixRadius
+        ));
+    }
     
     const curve1 = new THREE.CatmullRomCurve3(points1);
     const curve2 = new THREE.CatmullRomCurve3(points2);
